@@ -1,0 +1,42 @@
+<!-- 需指定管理員頁面使用 layouts 的 admin.vue -->
+<template>
+  <v-navigation-drawer permanent>
+    <v-list>
+      <!-- <v-list-item
+      :prepend-avatar="`https://api.multiavatar.com/${user.account}.png`"
+      :title="user.account"
+      /> -->
+      <v-list-item
+        :prepend-avatar="`https://api.dicebear.com/9.x/thumbs/png/seed=${user.account}`"
+        :title="user.account"
+      />
+    </v-list>
+    <v-divider />
+    <v-list>
+      <v-list-item
+        v-for="item of navItems"
+        :key="item.to"
+        :prepend-icon="item.icon"
+        :title="item.title"
+        :to="item.to"
+      />
+    </v-list>
+  </v-navigation-drawer>
+  <v-main>
+    <!-- 這裡才是顯示的頁面，類似 iframe 的功用，會顯示 pages 導入的頁面內容 -->
+    <router-view />
+  </v-main>
+</template>
+
+<script setup>
+// 取得使用者的資料
+import { useUserStore } from '@/stores/user'
+
+const user = useUserStore()
+
+const navItems = [
+  { title: '商品管理', to: '/admin/products', icon: 'mdi-shopping' },
+  { title: '訂單管理', to: '/admin/orders', icon: 'mdi-invoice-list-outline' },
+  { title: '首頁', to: '/', icon: 'mdi-home' },
+]
+</script>
