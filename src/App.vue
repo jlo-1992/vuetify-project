@@ -1,5 +1,3 @@
-<!-- layout 用什麼元件 -->
-
 <template>
   <v-app>
     <router-view />
@@ -7,5 +5,5 @@
 </template>
 
 <script setup>
-//
+  //
 </script>

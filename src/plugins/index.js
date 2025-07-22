@@ -4,28 +4,14 @@
  * Automatically included in `./src/main.js`
  */
 
-// vue-file-agent-next
-import VueFileAgentNext from '@boindil/vue-file-agent-next'
 // Plugins
-import VuetifyUseDialog from 'vuetify-use-dialog'
-import router from '@/router'
-import pinia from '@/stores'
 import vuetify from './vuetify'
-// vue-file-agent-next
-import '@boindil/vue-file-agent-next/dist/vue-file-agent-next.css'
+import pinia from '@/stores'
+import router from '@/router'
 
-export function registerPlugins(app) {
+export function registerPlugins (app) {
   app
     .use(vuetify)
-    .use(VuetifyUseDialog, {
-      snackbar: {
-        showCloseButton: false,
-        snackbarProps: {
-          timeout: 2000,
-        },
-      },
-    })
-    .use(VueFileAgentNext)
     .use(router)
     .use(pinia)
 }
